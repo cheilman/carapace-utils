@@ -1,0 +1,5 @@
+directories:
+  main/
+
+derive_targets_from_directories: true
+

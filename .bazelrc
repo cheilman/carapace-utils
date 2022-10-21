@@ -1,0 +1,17 @@
+# Prefer C++20
+build --cxxopt='-std=c++20'
+
+# Try to mostly link statically
+build --dynamic_mode=off
+
+# Max parallel jobs
+build --jobs=100
+
+# Don't stop on the first error
+build --keep_going
+
+# Friendly output
+build --show_loading_progress
+build --show_progress
+
+
