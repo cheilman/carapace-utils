@@ -1,12 +1,12 @@
+#include <grpcpp/ext/proto_server_reflection_plugin.h>
+#include <grpcpp/grpcpp.h>
+#include <grpcpp/health_check_service_interface.h>
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 #include "absl/strings/str_join.h"
-#include <grpcpp/ext/proto_server_reflection_plugin.h>
-#include <grpcpp/grpcpp.h>
-#include <grpcpp/health_check_service_interface.h>
-
 #include "protos/helloworld.grpc.pb.h"
 
 using grpc::Server;
@@ -18,9 +18,8 @@ using helloworld::HelloReply;
 using helloworld::HelloRequest;
 
 class GreeterServiceImpl final : public Greeter::Service {
-  Status SayHello(ServerContext* context,
-        const HelloRequest* request,
-        HelloReply* reply) override {
+  Status SayHello(ServerContext* context, const HelloRequest* request,
+                  HelloReply* reply) override {
     reply->set_message(absl::StrCat("Hello", " ", request->name()));
     return Status::OK;
   }
@@ -45,9 +44,8 @@ void RunServer() {
   server->Wait();
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   RunServer();
 
   return 0;
 }
-
