@@ -27,27 +27,23 @@ go_register_toolchains(version = "1.19.1")
 # rules_cc defines rules for generating C++ code from Protocol Buffers.
 http_archive(
   name = "rules_cc",
-  sha256 = "35f2fb4ea0b3e61ad64a369de284e4fbbdcdba71836a5555abb5e194cf119509",
-  strip_prefix = "rules_cc-624b5d59dfb45672d4239422fa1e3de1822ee110",
-  urls = [
-    "https://mirror.bazel.build/github.com/bazelbuild/rules_cc/archive/624b5d59dfb45672d4239422fa1e3de1822ee110.tar.gz",
-    "https://github.com/bazelbuild/rules_cc/archive/624b5d59dfb45672d4239422fa1e3de1822ee110.tar.gz",
-  ],
-)
-
-# rules_proto defines abstract rules for building Protocol Buffers.
-http_archive(
-  name = "rules_proto",
-  sha256 = "2490dca4f249b8a9a3ab07bd1ba6eca085aaf8e45a734af92aad0c42d9dc7aaf",
-  strip_prefix = "rules_proto-218ffa7dfa5408492dc86c01ee637614f8695c45",
-  urls = [
-    "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/218ffa7dfa5408492dc86c01ee637614f8695c45.tar.gz",
-    "https://github.com/bazelbuild/rules_proto/archive/218ffa7dfa5408492dc86c01ee637614f8695c45.tar.gz",
-  ],
+  urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.0.4/rules_cc-0.0.4.tar.gz"],
+  sha256 = "af6cc82d87db94585bceeda2561cb8a9d55ad435318ccb4ddfee18a43580fb5d",
+  strip_prefix = "rules_cc-0.0.4",
 )
 
 load("@rules_cc//cc:repositories.bzl", "rules_cc_dependencies")
 rules_cc_dependencies()
+
+# rules_proto defines abstract rules for building Protocol Buffers.
+http_archive(
+  name = "rules_proto",
+  sha256 = "80d3a4ec17354cccc898bfe32118edd934f851b03029d63ef3fc7c8663a7415c",
+  strip_prefix = "rules_proto-5.3.0-21.5",
+  urls = [
+    "https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.5.tar.gz",
+  ],
+)
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()

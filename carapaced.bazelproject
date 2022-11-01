@@ -1,5 +1,8 @@
 directories:
-  main/
+  protos/
+  server/
+  clients/
+  tools/
 
 derive_targets_from_directories: true
 
