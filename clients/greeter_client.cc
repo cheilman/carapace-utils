@@ -15,7 +15,7 @@ using helloworld::HelloRequest;
 
 class GreeterClient {
   public:
-    GreeterClient(std::shared_ptr<Channel> channel)
+    explicit GreeterClient(const std::shared_ptr<Channel>& channel)
       : stub_(Greeter::NewStub(channel)) {}
 
     std::string SayHello(const std::string& user) {
@@ -30,10 +30,10 @@ class GreeterClient {
 
       if (status.ok()) {
         return reply.message();
-      } else {
-        std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-        return "RPC failed";
       }
+
+      std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+      return "RPC failed";
     }
 
   private:

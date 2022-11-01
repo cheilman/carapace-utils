@@ -18,7 +18,7 @@ using helloworld::HelloReply;
 using helloworld::HelloRequest;
 
 class GreeterServiceImpl final : public Greeter::Service {
-  Status SayHello(ServerContext* contetx,
+  Status SayHello(ServerContext* context,
         const HelloRequest* request,
         HelloReply* reply) override {
     reply->set_message(absl::StrCat("Hello", " ", request->name()));

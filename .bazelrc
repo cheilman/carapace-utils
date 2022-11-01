@@ -15,4 +15,14 @@ build --keep_going
 build --show_loading_progress
 build --show_progress
 
+#
+# Clang-tidy
+#
+
+# Required for bazel_clang_tidy to operate as expected
+build:clang-tidy --aspects @bazel_clang_tidy//clang_tidy:clang_tidy.bzl%clang_tidy_aspect
+build:clang-tidy --output_groups=report
+
+# Optionally override the .clang-tidy config file target
+build:clang-tidy --@bazel_clang_tidy//:clang_tidy_config=//:clang_tidy_config
 
