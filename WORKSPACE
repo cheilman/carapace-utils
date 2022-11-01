@@ -132,9 +132,8 @@ http_archive(
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
-  name = "bazel_clang_tidy",
-  sha256 = "04da082ca67e65cb0f595d7ea5147e07046d9ce1cbfed8b16c53b5ab08350510",
-  strip_prefix = "bazel_clang_tidy-41d3033cce4f6e42f7b683894e7b78ecf8491417",
-  url = "https://github.com/dayfoo/bazel_clang_tidy/archive/41d3033cce4f6e42f7b683894e7b78ecf8491417.tar.gz",
+    name = "bazel_clang_tidy",
+    sha256 = "04da082ca67e65cb0f595d7ea5147e07046d9ce1cbfed8b16c53b5ab08350510",
+    strip_prefix = "bazel_clang_tidy-41d3033cce4f6e42f7b683894e7b78ecf8491417",
+    url = "https://github.com/dayfoo/bazel_clang_tidy/archive/41d3033cce4f6e42f7b683894e7b78ecf8491417.tar.gz",
 )
-
