@@ -3,8 +3,13 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
   name = "carapaced-lib",
-  srcs = ["main.cc"],
-  deps = ["@com_google_absl//absl/strings"],
+  srcs = ["server.cc"],
+  deps = [
+    "@com_google_absl//absl/strings",
+    "@com_github_grpc_grpc//:grpc++",
+    "@com_github_grpc_grpc//:grpc++_reflection",
+    "//protos:helloworld_cc_grpc",
+  ],
 )
 
 cc_binary(
