@@ -26,7 +26,7 @@ class GreeterClient {
 
     ClientContext context;
 
-    Status status = stub_->SayHello(&context, request, &reply);
+    const Status status = stub_->SayHello(&context, request, &reply);
 
     if (status.ok()) {
       return reply.message();
@@ -41,14 +41,14 @@ class GreeterClient {
   std::unique_ptr<Greeter::Stub> stub_;
 };
 
-int main(int argc, char** argv) {
-  std::string target = "localhost:50051";
-  std::string user = "cheilman";
+int main(int argc, char** argv) { // NOLINT(misc-unused-parameters)
+  const std::string target = "localhost:50051";
+  const std::string user = "cheilman";
 
   GreeterClient greeter(
       grpc::CreateChannel(target, grpc::InsecureChannelCredentials()));
 
-  std::string reply = greeter.SayHello(user);
+  const std::string reply = greeter.SayHello(user);
   std::cout << "Greeter received: " << reply << std::endl;
 
   return 0;

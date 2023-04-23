@@ -4,6 +4,7 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "carapaced-lib",
     srcs = ["server.cc"],
+    hdrs = ["termcolor.hpp"],
     deps = [
         "//protos:helloworld_cc_grpc",
         "@com_github_grpc_grpc//:grpc++",
