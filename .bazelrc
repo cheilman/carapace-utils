@@ -1,6 +1,7 @@
 # Prefer C++17
 #build --cxxopt='-std=c++17' # This should work, but doesn't
 build --action_env=BAZEL_CXXOPTS="-std=c++17"
+build --action_env=CC=gcc-13
 
 # Try to mostly link statically
 build --dynamic_mode=off

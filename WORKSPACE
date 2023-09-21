@@ -99,6 +99,46 @@ load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
 grpc_extra_deps()
 
 #
+# ForeignCc
+#
+
+http_archive(
+    name = "rules_foreign_cc",
+#    sha256 = "2a4d07cd64b0719b39a7c12218a3e507672b82a97b98c6a89d38565894cf7c51",
+#    strip_prefix = "rules_foreign_cc-0.9.0",
+#    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.9.0.tar.gz",
+    sha256 = "1c726b3ddcbf9061cca885fed3101a7966f0fe959a56c76ef861e04cc719a8fb",
+    strip_prefix = "rules_foreign_cc-14ded03b9c835e9ccba6a20f0944729dccab8d9b",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/14ded03b9c835e9ccba6a20f0944729dccab8d9b.tar.gz",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+rules_foreign_cc_dependencies(
+  register_built_pkgconfig_toolchain = True,
+)
+
+#
+# FTXUI
+#
+
+_ALL_CONTENT = """\
+filegroup(
+  name = "all_srcs",
+  srcs = glob(["**"]),
+  visibility = ["//visibility:public"],
+)
+"""
+
+http_archive(
+  name = "ftxui",
+  build_file_content = _ALL_CONTENT,
+  strip_prefix = "FTXUI-5.0.0",
+  url = "https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v5.0.0.tar.gz",
+  sha256 = "a2991cb222c944aee14397965d9f6b050245da849d8c5da7c72d112de2786b5b",
+)
+
+#
 # Buildifier (bazel formatter and linter)
 #
 http_archive(

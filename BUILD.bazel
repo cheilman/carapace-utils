@@ -2,6 +2,7 @@
 # Buildifier support
 #
 load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 
 buildifier(
     name = "buildifier",
@@ -15,3 +16,19 @@ filegroup(
     srcs = [".clang-tidy"],
     visibility = ["//visibility:public"],
 )
+
+#
+# FTXUI
+#
+cmake(
+  name = "ftxui",
+  cache_entries = {
+    "CMAKE_OSX_DEPLOYMENT_TARGET": "13.0",
+  },
+  lib_source = "@ftxui//:all_srcs",
+  out_static_libs = ["libftxui-screen.a", "libftxui-dom.a", "libftxui-component.a"],
+  out_include_dir = "include",
+  alwayslink = True,
+  visibility = ["//visibility:public"],
+)
+
