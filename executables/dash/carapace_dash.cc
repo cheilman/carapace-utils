@@ -2,19 +2,17 @@
 #include <ftxui/screen/screen.hpp>
 
 int main(int argc, char** argv) { // NOLINT(misc-unused-parameters)
-  using namespace ftxui;
-
   // Define the document
-  Element document =
-    hbox({
-      text("left")   | border,
-      text("middle") | border | flex,
-      text("right")  | border,
+  ftxui::Element document =
+    ftxui::hbox({
+        ftxui::text("left")   | ftxui::border,
+      ftxui::text("middle") | ftxui::border | ftxui::flex,
+      ftxui::text("right")  | ftxui::border,
     });
 
-  auto screen = Screen::Create(
-    Dimension::Full(),       // Width
-    Dimension::Fit(document) // Height
+  auto screen = ftxui::Screen::Create(
+    ftxui::Dimension::Full(),       // Width
+    ftxui::Dimension::Fit(document) // Height
   );
   Render(screen, document);
   screen.Print();
