@@ -1,9 +1,8 @@
-//#include <ftxui/dom/elements.hpp>
-//#include <ftxui/screen/screen.hpp>
+#include <ftxui/dom/elements.hpp>
+#include <ftxui/screen/screen.hpp>
 
-int main(int argc, char** argv) { // NOLINT(misc-unused-parameters)
+int main(/*int argc, char** argv*/) { // NOLINT(clang-diagnostic-unused-parameter, misc-unused-parameters)
   // Define the document
-  /*
   ftxui::Element document =
     ftxui::hbox({
         ftxui::text("left")   | ftxui::border,
@@ -19,6 +18,4 @@ int main(int argc, char** argv) { // NOLINT(misc-unused-parameters)
   screen.Print();
 
   return EXIT_SUCCESS;
-  */
-  return 1;
 }
