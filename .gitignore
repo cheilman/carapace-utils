@@ -55,3 +55,5 @@
 # Ignore outputs generated during Bazel bootstrapping.
 /output/
 
+# Ignore cmake build folders
+/build*
