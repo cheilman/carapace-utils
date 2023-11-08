@@ -21,10 +21,4 @@ target_include_directories(carapace-utils-lib PUBLIC ../include)
 
 target_compile_features(carapace-utils-lib PUBLIC cxx_std_17)
 
-source_group(
-  TREE "${PROJECT_SOURCE_DIR}/include"
-  PREFIX "Header Files"
-  FILES ${HEADER_LIST}
-)
-
 

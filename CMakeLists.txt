@@ -32,6 +32,41 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # Turn on tests
 enable_testing()
 
+# Modules we need
+include(FetchContent)
+
+#
+# Dependencies
+#
+
+set(FETCHCONTENT_QUIET OFF)
+
+# Load protobuf
+#FetchContent_Declare(
+#        protocolbuffers_protobuf
+#        GIT_REPOSITORY https://github.com/protocolbuffers/protobuf.git
+#        GIT_TAG v25.0
+#        FIND_PACKAGE_ARGS NAMES protobuf
+#)
+#FetchContent_MakeAvailable(protocolbuffers_protobuf)
+#
+#include(FindProtobuf)
+#find_package(protocolbuffers_protobuf CONFIG REQUIRED)
+
+set(Protobuf_USE_STATIC_LIBS ON)
+
+# gRPC, absl, and protocol buffers
+set(ABSL_ENABLE_INSTALL ON)
+FetchContent_Declare(
+        gRPC
+        GIT_REPOSITORY https://github.com/grpc/grpc
+        GIT_TAG      v1.59.2
+)
+FetchContent_MakeAvailable(gRPC)
+
+include(FindProtobuf)
+#find_package(protobuf CONFIG REQUIRED)
+
 #
 # Protos
 #
@@ -40,19 +75,19 @@ add_subdirectory(protos)
 #
 # Libraries
 #
-add_subdirectory(src)
+#add_subdirectory(src)
 
 #
 # Executables
 #
-add_subdirectory(apps/dash)
-add_subdirectory(apps/greeter)
-add_subdirectory(apps/server)
+#add_subdirectory(apps/dash)
+#add_subdirectory(apps/greeter)
+#add_subdirectory(apps/server)
 
 #
 # Tests
 #
-if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MYPROJECT_BUILD_TESTING) AND BUILD_TESTING)
-  add_subdirectory(tests)
-endif()
+#if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MYPROJECT_BUILD_TESTING) AND BUILD_TESTING)
+#  add_subdirectory(tests)
+#endif()
 

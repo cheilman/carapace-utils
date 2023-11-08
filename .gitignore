@@ -57,3 +57,4 @@
 
 # Ignore cmake build folders
 /build*
+/cmake-build-debug/
