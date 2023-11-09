@@ -10,15 +10,34 @@ project(carapace-utils-protos-lib
 # Protos
 #
 
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS helloworld.proto)
+set(PROTO_FILES
+        helloworld.proto
+)
 
 add_library(carapace-utils-protos-lib
         STATIC
-        ${PROTO_SRCS} ${PROTO_HDRS}
+        ${PROTO_FILES}
 )
 
-target_link_libraries(carapace-utils-protos-lib PUBLIC protobuf::libprotobuf)
+target_link_libraries(
+        carapace-utils-protos-lib
+        PUBLIC
+            protobuf::libprotobuf
+            grpc
+            grpc++
+)
 
-target_include_directories(carapace-utils-protos-lib PUBLIC ${Protobuf_HEADERS})
+target_include_directories(carapace-utils-protos-lib PUBLIC "${CMAKE_BINARY_DIR}")
+
+protobuf_generate(
+        TARGET carapace-utils-protos-lib
+        LANGUAGE cpp
+)
+protobuf_generate(
+        TARGET carapace-utils-protos-lib
+        LANGUAGE grpc
+        GENERATE_EXTENSIONS .grpc.pb.h .grpc.pb.cc
+        PLUGIN "protoc-gen-grpc=\$<TARGET_FILE:grpc_cpp_plugin>"
+)
 
 

@@ -7,7 +7,7 @@
 #include <string>
 
 #include "protos/helloworld.grpc.pb.h"
-#include "server/termcolor.hpp"
+#include "termcolor.hpp"
 
 using grpc::Server;
 using grpc::ServerBuilder;

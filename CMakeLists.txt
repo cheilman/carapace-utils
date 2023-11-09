@@ -81,8 +81,8 @@ add_subdirectory(protos)
 # Executables
 #
 #add_subdirectory(apps/dash)
-#add_subdirectory(apps/greeter)
-#add_subdirectory(apps/server)
+add_subdirectory(apps/greeter)
+add_subdirectory(apps/server)
 
 #
 # Tests
